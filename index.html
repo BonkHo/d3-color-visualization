@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>D3 Color Visualization</title>
+	</head>
+	<body>
+		<script>
+			const csvUrl =
+				"https://gist.githubusercontent.com/BonkHo/e094309371d9e6fd3a96e9ded5234da0/raw/f588525bdf114bb02c08e0969376600886db7aba/cssNamedColors.csv";
+
+			// fetch(url).then((response) => {
+			// 	response.text().then((text) => {
+			// 		console.log(text);
+			// 	});
+			// });
+
+			const fetchText = async (url) => {
+				const reponse = await fetch(url);
+				return await reponse.text();
+			};
+
+			fetchText(csvUrl).then((text) => {
+				console.log(text);
+			});
+		</script>
+	</body>
+</html>
