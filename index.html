@@ -4,9 +4,16 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="https://unpkg.com/d3@7.2.1/dist/d3.min.js"></script>
 		<title>D3 Color Visualization</title>
+		<style>
+			pre {
+				font-size: 2em;
+			}
+		</style>
 	</head>
 	<body>
+		<pre id="message-container"></pre>
 		<script>
 			const csvUrl =
 				"https://gist.githubusercontent.com/BonkHo/e094309371d9e6fd3a96e9ded5234da0/raw/f588525bdf114bb02c08e0969376600886db7aba/cssNamedColors.csv";
@@ -17,14 +24,28 @@
 			// 	});
 			// });
 
-			const fetchText = async (url) => {
-				const reponse = await fetch(url);
-				return await reponse.text();
-			};
-
-			fetchText(csvUrl).then((text) => {
-				console.log(text);
+			d3.csv(csvUrl).then((data) => {
+				let message = "";
+				message =
+					message + Math.round(d3.csvFormat(data).length / 1024) + " kB\n";
+				message = message + data.length + " rows\n";
+				message = message + data.columns.length + " columns\n";
+				document.getElementById("message-container").textContent = message;
 			});
+
+			// const fetchText = async (url) => {
+			// 	const reponse = await fetch(url);
+			// 	return await reponse.text();
+			// };
+
+			// fetchText(csvUrl).then((text) => {
+			// 	const data = d3.csvParse(text);
+			// 	let message = "";
+			// 	message = message + Math.round(text.length / 1024) + " kB\n";
+			// 	message = message + data.length + " rows\n";
+			// 	message = message + data.columns.length + " columns\n";
+			// 	document.getElementById("message-container").textContent = message;
+			// });
 		</script>
 	</body>
 </html>
