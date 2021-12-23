@@ -6,6 +6,7 @@ import "./App.css";
 import HomePage from "./pages/HomePage";
 import LineChart from "./pages/LineChart";
 import PieChart from "./pages/PieChart";
+import PieOutline from "./pages/PieOutline";
 
 function App() {
 	return (
@@ -13,6 +14,7 @@ function App() {
 			<Routes>
 				<Route exact path="/" element={<HomePage />} />
 				<Route exact path="/linechart" element={<LineChart />} />
+				<Route exact path="/pieoutline" element={<PieOutline />} />
 				<Route exact path="/piechart" element={<PieChart />} />
 			</Routes>
 		</Router>
